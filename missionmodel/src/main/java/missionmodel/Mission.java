@@ -1,14 +1,14 @@
 package missionmodel;
 
-// import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
-// import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
+import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
+import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
 
 import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.spawn;
-// import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
+ import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
 
-// import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
-// import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete.discrete;
+import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
+import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete.discrete;
 
 /**
  * Top-level Mission Model Class
@@ -20,7 +20,7 @@ public final class Mission {
 
   // Special registrar class that handles simulation errors via auto-generated resources
   public final Registrar errorRegistrar;
-
+  public final DataModel dataModel;
   // Example resource declaration
   // public MutableResource<Discrete<Double>> ExampleResource;
 
@@ -30,6 +30,7 @@ public final class Mission {
   public Mission(final gov.nasa.jpl.aerie.merlin.framework.Registrar registrar, final Configuration config) {
     this.errorRegistrar = new Registrar(registrar, Registrar.ErrorBehavior.Log);
 
+    this.dataModel = new DataModel(this.errorRegistrar);
     // Example resource definition and registration
     // ExampleResource = resource(discrete(0.0));
     // errorRegistrar.discrete("ExampleResource", ExampleResource, new DoubleValueMapper());

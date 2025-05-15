@@ -28,7 +28,7 @@ Try out the following models:
   Open up `.env` and fill in the just the missing variables with your Github information:
 
   ```sh
-  # in .env file
+  # in ..env file
   GITHUB_USER="your_github_username_here"
   GITHUB_TOKEN="your_personal_access_token"
   ```
